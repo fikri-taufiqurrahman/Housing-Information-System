@@ -5,8 +5,8 @@ function FooterComponent() {
       className="footer"
       style={{ marginTop: "20px", textAlign: "center", color: "gray" }}
     >
-      <h6>This Website is Made by Group Six Class B</h6>
-      <h6>Copyright @2022</h6>
+      <h6>Housing Information System</h6>
+      <h6>Copyright @2023</h6>
     </div>
   );
 }

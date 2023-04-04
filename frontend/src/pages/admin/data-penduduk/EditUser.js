@@ -56,7 +56,7 @@ const EditUser = () => {
       <div style={{ width: "30%", margin: "7% auto" }}>
         <Form onSubmit={updateUser}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Nomor Induk Keluarga</Form.Label>
+            <Form.Label>Family Identification Number</Form.Label>
             <Form.Control
               type="number"
               placeholder="Enter NIK"
@@ -130,7 +130,7 @@ const EditUser = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Nomor Rumah</Form.Label>
+            <Form.Label>House Number</Form.Label>
             <Form.Control
               type="text"
               className="input"

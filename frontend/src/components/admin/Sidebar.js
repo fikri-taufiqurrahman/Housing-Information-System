@@ -48,7 +48,7 @@ function Sidebar() {
         backdrop="static"
       >
         <Offcanvas.Header closeButton closeVariant="white">
-          <Offcanvas.Title>Sistem Informasi Perum</Offcanvas.Title>
+          <Offcanvas.Title>Housing Information System</Offcanvas.Title>
         </Offcanvas.Header>
         <img
           src="https://i.ibb.co/mRzmDtw/SIP.png"
@@ -59,43 +59,45 @@ function Sidebar() {
           <div className="s" style={{ backgroundColor: "#0000" }}>
             <Accordion defaultActiveKey="0">
               <Accordion.Item eventKey="0">
-                <Accordion.Header>Kelola Data Penduduk</Accordion.Header>
+                <Accordion.Header>Manage Resident Data</Accordion.Header>
                 <Accordion.Body>
                   <Link to={"/admin/list-penduduk/add"}>
-                    <Button style={{ width: 330 }}>Registrasi Penduduk</Button>
+                    <Button style={{ width: 330 }}>
+                      Resident Registration
+                    </Button>
                   </Link>
                   <div className="mb-2"></div>
                   <Link to={"/admin/list-penduduk"}>
-                    <Button style={{ width: 330 }}>Data Penduduk</Button>
+                    <Button style={{ width: 330 }}>Resident Data</Button>
                   </Link>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
-                <Accordion.Header>Kelola Keuangan</Accordion.Header>
+                <Accordion.Header>Manage Finance</Accordion.Header>
                 <Accordion.Body>
                   <Link to={"/admin/pembayaran"}>
-                    <Button style={{ width: 330 }}>Kelola Iuran Warga</Button>
+                    <Button style={{ width: 330 }}>Manage Resident Dues</Button>
                   </Link>
                   <div className="mb-2"></div>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="3">
-                <Accordion.Header>Kelola Pengumuman</Accordion.Header>
+                <Accordion.Header>Manage News</Accordion.Header>
                 <Accordion.Body>
                   <Link to={"/admin/berita/add"}>
-                    <Button style={{ width: 330 }}>Tambah Pengumuman</Button>
+                    <Button style={{ width: 330 }}>Add News</Button>
                   </Link>
                   <div className="mb-2"></div>
                   <Link to={"/admin/berita"}>
-                    <Button style={{ width: 330 }}>Lihat Pengumuman</Button>
+                    <Button style={{ width: 330 }}>See News</Button>
                   </Link>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="4">
-                <Accordion.Header>Kelola Akun</Accordion.Header>
+                <Accordion.Header>Manage an Account</Accordion.Header>
                 <Accordion.Body>
                   <Link to={"/users"}>
-                    <Button style={{ width: 330 }}>Login Sebagai User</Button>
+                    <Button style={{ width: 330 }}>Login As User</Button>
                   </Link>
                 </Accordion.Body>
               </Accordion.Item>

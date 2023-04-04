@@ -53,7 +53,7 @@ const EditStatus = () => {
         <Form onSubmit={updateUser}>
           <Form.Group className="mb-3">
             <Form.Label>
-              Input Pemakaian Air (M<sup>3</sup> )
+              Input Water Usage (M<sup>3</sup> )
             </Form.Label>
             <Form.Control
               type="number"
@@ -64,7 +64,7 @@ const EditStatus = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3" hidden>
-            <Form.Label>keamanan (Rupiah) </Form.Label>
+            <Form.Label>Security (Rupiah) </Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter price"
@@ -74,7 +74,7 @@ const EditStatus = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3" hidden>
-            <Form.Label>kebersihan (Rupiah)</Form.Label>
+            <Form.Label>Cleanliness (Rupiah)</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter price"
@@ -90,9 +90,11 @@ const EditStatus = () => {
               value={status}
               onChange={(e) => setStatus(e.target.value)}
             >
-              <option value="berhasil">berhasil</option>
-              <option value="menunggu konfirmasi">manunggu konfirmasi</option>
-              <option value="belum dibayar">belum dibayar</option>
+              <option value="berhasil">Success</option>
+              <option value="menunggu konfirmasi">
+                Waiting for Confirmation
+              </option>
+              <option value="belum dibayar">Not Yet Paid</option>
             </Form.Select>
           </Form.Group>
 

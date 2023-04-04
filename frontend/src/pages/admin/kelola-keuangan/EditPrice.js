@@ -43,9 +43,9 @@ const EditPrice = () => {
       <div style={{ marginTop: "10%", width: "30%", marginLeft: "35%" }}>
         <Form onSubmit={updateHarga}>
           <Form.Group className="mb-3">
-            <h2>Update Harga</h2>
+            <h2>Update Price</h2>
             <Form.Label>
-              Input Harga Air (M<sup>3</sup> )
+              Water Price Input (M<sup>3</sup> )
             </Form.Label>
             <Form.Control
               type="number"
@@ -56,7 +56,7 @@ const EditPrice = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Input Harga Keamanan</Form.Label>
+            <Form.Label>Security Price Input</Form.Label>
             <Form.Control
               type="number"
               placeholder="Enter price"
@@ -66,7 +66,7 @@ const EditPrice = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Input Harga Kebersihan</Form.Label>
+            <Form.Label>Cleanliness Price Input</Form.Label>
             <Form.Control
               type="number"
               placeholder="Enter price"

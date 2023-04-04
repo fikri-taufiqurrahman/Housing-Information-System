@@ -60,7 +60,7 @@ const AddNews = () => {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>Deskripsi:</Form.Label>
+            <Form.Label>Description:</Form.Label>
             <Form.Control
               type="text"
               className="input"

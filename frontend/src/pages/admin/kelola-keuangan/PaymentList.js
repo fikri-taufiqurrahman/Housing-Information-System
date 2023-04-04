@@ -31,19 +31,19 @@ const PaymentList = () => {
     <div>
       <NavbarComponent></NavbarComponent>
       <Link to="updateharga">
-        <Button variant="primary">Edit Harga</Button>
+        <Button variant="primary">Edit Price</Button>
       </Link>
       <div style={{ margin: "7% auto", width: "90%" }}>
-        <h2>Kelola Keuangan</h2>
+        <h2>Manage Finance</h2>
         <Table striped bordered hover>
           <thead>
             <tr>
               <th>No</th>
-              <th>Nama</th>
-              <th>No Rumah</th>
-              <th>Air</th>
-              <th>Keamanan</th>
-              <th>Kebersihan</th>
+              <th>Name</th>
+              <th>Housing Number</th>
+              <th>Water</th>
+              <th>Security</th>
+              <th>Cleanliness</th>
               <th>Total</th>
               <th>Status</th>
               <th>Actions</th>
@@ -75,7 +75,7 @@ const PaymentList = () => {
                     to={`/admin/buktipembayaran/${user.id}`}
                     style={{ marginLeft: "5px" }}
                   >
-                    <Button variant="primary">Bukti Pembayaran</Button>
+                    <Button variant="primary">Proof of Payment</Button>
                   </Link>
                 </td>
               </tr>
@@ -83,7 +83,7 @@ const PaymentList = () => {
           </tbody>
         </Table>
         <Link to={"updateharga"}>
-          <Button>Update Harga Pemakaian Air, Keamanan dan Kebersihan</Button>
+          <Button>Update Price of Water Usage, Security and Cleanliness</Button>
         </Link>
         ;
       </div>

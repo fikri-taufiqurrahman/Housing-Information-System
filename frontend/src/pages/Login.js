@@ -46,8 +46,8 @@ const Login = () => {
                   alt="First slide"
                 />
                 <Carousel.Caption>
-                  <h2>Pusat Informasi Perumahan</h2>
-                  <p>Dapatkan informasi perumahan secara mudah dan cepat</p>
+                  <h2>Housing Information System</h2>
+                  <p>Get housing information easily and quickly</p>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item interval={1000}>
@@ -58,8 +58,11 @@ const Login = () => {
                   alt="Second slide"
                 />
                 <Carousel.Caption>
-                  <h2>Dapatkan pelayanan yang maksimal</h2>
-                  <p>Memudahkan anda berkomunikasi dengan pihak pengurus RT</p>
+                  <h2>Get maximum services</h2>
+                  <p>
+                    Make it easy for you to communicate with the Household
+                    management
+                  </p>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
@@ -69,10 +72,8 @@ const Login = () => {
                   alt="Third slide"
                 />
                 <Carousel.Caption>
-                  <h2>Pembayaran yang mudah</h2>
-                  <p>
-                    Membayar tagihan air, keamanan, dan kebersihan secara cepat
-                  </p>
+                  <h2>Easy payments</h2>
+                  <p>Pay for water, security, and cleanliness bills quickly</p>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
@@ -82,7 +83,7 @@ const Login = () => {
               <img
                 src="./img/logo.png"
                 alt=""
-                style={{ width: "400px", margin: "0 10%" }}
+                style={{ width: "200px", margin: "0 30%" }}
               />
               <Form.Group className="mb-4" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

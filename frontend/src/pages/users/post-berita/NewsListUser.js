@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavbarComponent from "../../../components/users/Navbar";
-import { Link } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 const NewsListUser = () => {
   const [news, setNews] = useState([]);
@@ -14,15 +13,6 @@ const NewsListUser = () => {
   const getNews = async () => {
     const response = await axios.get("http://localhost:5000/news");
     setNews(response.data);
-  };
-
-  const deleteProduct = async (beritaId) => {
-    try {
-      await axios.delete(`http://localhost:5000/news/${beritaId}`);
-      getNews();
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (

@@ -42,7 +42,7 @@ const AddUser = () => {
       <div style={{ width: "30%", margin: "7% auto" }}>
         <Form onSubmit={saveUser}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Nomor Induk Keluarga</Form.Label>
+            <Form.Label>Family Identification Number</Form.Label>
             <Form.Control
               type="number"
               placeholder="Enter NIK"
@@ -106,7 +106,7 @@ const AddUser = () => {
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label>telepon</Form.Label>
+            <Form.Label>telephone</Form.Label>
             <Form.Control
               type="text"
               className="input"
@@ -116,7 +116,7 @@ const AddUser = () => {
             />
           </Form.Group>
           <Form.Group className="mb-2">
-            <Form.Label>Nomor Rumah</Form.Label>
+            <Form.Label>House Number</Form.Label>
             <Form.Control
               type="text"
               className="input"

@@ -33,12 +33,12 @@ const NavbarComponent = () => {
         <Sidebar></Sidebar>
 
         <Container>
-          <Navbar.Brand href="/admin">SI Perum</Navbar.Brand>
+          <Navbar.Brand href="/admin">Housing Information System</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/admin/list-penduduk">Data Penduduk</Nav.Link>
-              <Nav.Link href="/admin/pembayaran">Pembayaran</Nav.Link>
+              <Nav.Link href="/admin/list-penduduk">Resident Data</Nav.Link>
+              <Nav.Link href="/admin/pembayaran">Payment</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link href="/admin/roomchat">Chat</Nav.Link>

@@ -68,10 +68,10 @@ const ProofOfPayment = () => {
             <hr />
             <div style={{ float: "left", width: "30%", marginLeft: "5%" }}>
               <Card.Text>
-                <p>Nama</p>
-                <p>Air</p>
-                <p>Keamanan</p>
-                <p>Kebersihan</p>
+                <p>Name</p>
+                <p>Water</p>
+                <p>Security</p>
+                <p>Cleanlines</p>
                 <p>Total</p>
               </Card.Text>
             </div>
@@ -109,7 +109,7 @@ const ProofOfPayment = () => {
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Button variant="primary" type="submit">
-                      Konfirmasi Pembayaran
+                      Payment Confirmation
                     </Button>
                   </Form.Group>
                 </Form>

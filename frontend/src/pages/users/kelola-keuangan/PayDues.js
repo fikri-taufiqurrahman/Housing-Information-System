@@ -135,7 +135,7 @@ const PayDues = () => {
 
             <Form onSubmit={saveProduct}>
               <Form.Group className="mb-3">
-                <Form.Label>Upload Bukti Pembayaran:</Form.Label>
+                <Form.Label>Upload Proof of Payment:</Form.Label>
                 <Form.Control
                   type="file"
                   className="file-input"
@@ -155,20 +155,20 @@ const PayDues = () => {
                   setStatus("menunggu konfirmasi");
                 }}
               >
-                Konfirmasi Pembayaran
+                Payment Confirmation
               </Button>
             </Form>
           </Card.Body>
         </Card>
         <div style={{ width: "50%", marginRight: "20%", float: "right" }}>
-          <h3>Rincian </h3>
+          <h3>Details </h3>
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Nama</th>
-                <th>Air </th>
-                <th>Keamanan</th>
-                <th>Kebersihan</th>
+                <th>Name</th>
+                <th>Water </th>
+                <th>Security</th>
+                <th>Cleanliness</th>
                 <th>Total</th>
                 <th>Status</th>
               </tr>

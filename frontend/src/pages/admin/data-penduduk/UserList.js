@@ -31,12 +31,12 @@ function UserList() {
           <thead>
             <tr>
               <th>No</th>
-              <th>NIK</th>
+              <th>FIN</th>
               <th>Name</th>
               <th>Email</th>
               <th>Gender</th>
-              <th>Telepon</th>
-              <th>Nomor Rumah</th>
+              <th>Telephone</th>
+              <th>House Number</th>
               <th>Actions</th>
             </tr>
           </thead>

@@ -84,10 +84,7 @@ function CardUser() {
             <Card.Title>{name}</Card.Title>
             <hr />
             <Card.Text>
-              <p>
-                "Dirimu yang sebenarnya adalah apa yang kamu lakukan disaat
-                tidak ada orang yang melihatmu."
-              </p>
+              <p>"The real you is what you do at the moment no one saw you."</p>
               <b>Ali bin Abi Thalib</b>
             </Card.Text>
             <hr />
