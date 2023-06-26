@@ -7,7 +7,8 @@ import { Card, Button, Form } from "react-bootstrap";
 const ProofOfPayment = () => {
   const [name, setName] = useState("");
   const [air, setAir] = useState("");
-  const [hargaAir, setHargaAir] = useState("");
+  const [pemakaianAir, setPemakaianAir] = useState("");
+  const [iuran, setIuran] = useState("");
   const [keamanan, setKeamanan] = useState("");
   const [kebersihan, setKebersihan] = useState("");
   const [status, setStatus] = useState("berhasil");
@@ -15,33 +16,31 @@ const ProofOfPayment = () => {
   const [url, setUrl] = useState("");
 
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { paymentId } = useParams();
 
   useEffect(() => {
     getPaymentById();
-    getPrice();
   }, []);
 
   const getPaymentById = async () => {
-    const response = await axios.get(`http://localhost:5000/users/${id}`);
-    setName(response.data.name);
+    const response = await axios.get(
+      `http://localhost:5000/pembayaran/null/null/${paymentId}`
+    );
+    setName(response.data.user.name);
     setAir(response.data.air);
+    setKeamanan(response.data.keamanan);
+    setKebersihan(response.data.kebersihan);
+    setIuran(50000);
     setTotal(response.data.total);
     setUrl(response.data.url);
-  };
-  const getPrice = async () => {
-    const response = await axios.get("http://localhost:5000/update-pembayaran");
-    setHargaAir(response.data.hargaAir);
-    setKeamanan(response.data.hargaKeamanan);
-    setKebersihan(response.data.hargaKebersihan);
   };
   const handleKonfirmasiPembayaran = async (e) => {
     e.preventDefault();
     setStatus("berhasil");
 
     try {
-      await axios.patch(`http://localhost:5000/pembayaran/${id}`, {
-        status,
+      await axios.patch(`http://localhost:5000/statusPembayaran/${paymentId}`, {
+        status: status,
       });
       navigate("/admin/pembayaran");
     } catch (error) {
@@ -72,44 +71,42 @@ const ProofOfPayment = () => {
                 <p>Water</p>
                 <p>Security</p>
                 <p>Cleanlines</p>
+                <p>VAT</p>
+                <p>Dues</p>
                 <p>Total</p>
               </Card.Text>
             </div>
             <div style={{ float: "right", width: "65%" }}>
               <p>: {name}</p>
-              <p>: {air * hargaAir}</p>
-              <p>: {keamanan}</p>
-              <p>: {kebersihan}</p>
-              <p>
-                :{" "}
-                {parseInt(air) * parseInt(hargaAir) +
-                  parseInt(keamanan) +
-                  parseInt(kebersihan)}
-              </p>
+              <p>: Rp{air},-</p>
+              <p>: Rp{keamanan},-</p>
+              <p>: Rp{kebersihan},-</p>
+              <p>: 10%</p>
+              <p>: Rp{iuran},-</p>
+              <p>: Rp{total},-</p>
             </div>
             <hr />
 
             <div style={{ marginTop: "45%" }}>
               <hr />
-              <div style={{ marginLeft: "25%" }}>
+              <div style={{ marginLeft: "5%" }}>
                 <Form onSubmit={handleKonfirmasiPembayaran}>
-                  <Form.Group
-                    className="mb-3"
-                    controlId="formBasicPassword"
-                    hidden
-                  >
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Status</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter price"
-                      className="input"
+                    <Form.Select
                       value={status}
                       onChange={(e) => setStatus(e.target.value)}
-                    />
+                    >
+                      <option value="Waiting For Confirmation">
+                        Waiting For Confirmation
+                      </option>
+                      <option value="Confirmed">Confirmed</option>
+                      <option value="Not Yet Paid">Not Yet Paid</option>
+                    </Form.Select>
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Button variant="primary" type="submit">
-                      Payment Confirmation
+                      Update Status
                     </Button>
                   </Form.Group>
                 </Form>

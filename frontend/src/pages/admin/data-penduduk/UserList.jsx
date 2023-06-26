@@ -14,6 +14,7 @@ function UserList() {
     const response = await axios.get("http://localhost:5000/users-data");
     setUsers(response.data);
   };
+
   const deleteUser = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/users/${id}`);
@@ -33,10 +34,12 @@ function UserList() {
               <th>No</th>
               <th>FIN</th>
               <th>Name</th>
+              <th>Role</th>
               <th>Email</th>
               <th>Gender</th>
               <th>Telephone</th>
               <th>House Number</th>
+
               <th>Actions</th>
             </tr>
           </thead>
@@ -46,10 +49,12 @@ function UserList() {
                 <td>{index + 1}</td>
                 <td>{user.nik}</td>
                 <td>{user.name}</td>
+                <td>{user.role}</td>
                 <td>{user.email}</td>
                 <td>{user.gender}</td>
                 <td>{user.telepon}</td>
                 <td>{user.no_rumah}</td>
+
                 <td>
                   <Link to={`edit/${user.id}`}>
                     <Button variant="success">Edit</Button>

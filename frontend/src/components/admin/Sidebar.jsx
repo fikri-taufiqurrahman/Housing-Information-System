@@ -66,21 +66,17 @@ function Sidebar() {
                       Resident Registration
                     </Button>
                   </Link>
-                  <div className="mb-2"></div>
-                  <Link to={"/admin/list-penduduk"}>
-                    <Button style={{ width: 330 }}>Resident Data</Button>
-                  </Link>
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="1">
+              {/* <Accordion.Item eventKey="1">
                 <Accordion.Header>Manage Finance</Accordion.Header>
                 <Accordion.Body>
-                  <Link to={"/admin/pembayaran"}>
-                    <Button style={{ width: 330 }}>Manage Resident Dues</Button>
+                  <Link to={"/admin/laporan-keuangan"}>
+                    <Button style={{ width: 330 }}>Manage Finance</Button>
                   </Link>
                   <div className="mb-2"></div>
                 </Accordion.Body>
-              </Accordion.Item>
+              </Accordion.Item> */}
               <Accordion.Item eventKey="3">
                 <Accordion.Header>Manage News</Accordion.Header>
                 <Accordion.Body>
@@ -93,7 +89,17 @@ function Sidebar() {
                   </Link>
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="4">
+              {/* <Accordion.Item eventKey="4">
+                <Accordion.Header>
+                  Manage (Friday Clean) Frilean
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Link to={"/admin/list-penduduk/add"}>
+                    <Button style={{ width: 330 }}>Frilean Data</Button>
+                  </Link>
+                </Accordion.Body>
+              </Accordion.Item> */}
+              <Accordion.Item eventKey="5">
                 <Accordion.Header>Manage an Account</Accordion.Header>
                 <Accordion.Body>
                   <Link to={"/users"}>

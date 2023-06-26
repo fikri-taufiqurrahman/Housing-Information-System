@@ -7,6 +7,7 @@ import NavbarComponent from "../../../components/admin/Navbar";
 
 const EditUser = () => {
   const [nik, setNik] = useState("");
+  const [role, setRole] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,6 +28,7 @@ const EditUser = () => {
     try {
       await axios.patch(`http://localhost:5000/users/${id}`, {
         nik,
+        role,
         name,
         email,
         password,
@@ -44,6 +46,7 @@ const EditUser = () => {
   const getUserById = async () => {
     const response = await axios.get(`http://localhost:5000/users/${id}`);
     setNik(response.data.nik);
+    setRole(response.data.role);
     setName(response.data.name);
     setEmail(response.data.email);
     setTelepon(response.data.telepon);
@@ -63,6 +66,16 @@ const EditUser = () => {
               className="input"
               value={nik}
               onChange={(e) => setNik(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Role</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Role"
+              className="input"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">

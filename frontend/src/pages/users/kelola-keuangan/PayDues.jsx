@@ -3,7 +3,7 @@ import axios from "axios";
 import { Table, Button, Card } from "react-bootstrap";
 import jwt_decode from "jwt-decode";
 import Form from "react-bootstrap/Form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import NavbarComponent from "../../../components/users/Navbar";
 const PayDues = () => {
   const [status, setStatus] = useState("menunggu konfirmasi");
@@ -17,11 +17,12 @@ const PayDues = () => {
   const [id, setId] = useState("");
   const [file, setFile] = useState("");
   const [price, setPrice] = useState("");
+  const [paymentById, setPaymentById] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     refreshToken();
     getPriceById();
-  }, []);
+  }, [id]);
 
   const refreshToken = async () => {
     try {
@@ -60,49 +61,17 @@ const PayDues = () => {
   );
 
   const getPriceById = async () => {
-    const response = await axios.get("http://localhost:5000/update-pembayaran");
-    setHargaAir(response.data.hargaAir);
-    setKeamanan(response.data.hargaKeamanan);
-    setKebersihan(response.data.hargaKebersihan);
+    const response = await axios.get(
+      `http://localhost:5000/getPaymentById/${id}`
+    );
+    setPaymentById(response.data);
   };
 
-  const loadImage = (e) => {
-    const image = e.target.files[0];
-    if (image !== "undefined") {
-      setFile(image);
-    }
-  };
-  const saveProduct = async (e) => {
-    setPrice(totalHarga);
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("status", status);
-    formData.append("price", price);
-    formData.append("file", file);
-    try {
-      await axios.patch(
-        `http://localhost:5000/buktipembayaran/${id}`,
-        formData,
-        {
-          headers: {
-            "Content-type": "multipart/form-data",
-          },
-        }
-      );
-      navigate("/users/bayar");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const totalHarga =
-    parseInt(air) * parseInt(hargaAir) +
-    parseInt(keamanan) +
-    parseInt(kebersihan);
   return (
     <div>
       <NavbarComponent></NavbarComponent>
       <div style={{ marginTop: "10%" }}>
-        <Card style={{ width: "19rem", float: "left", marginLeft: "100px" }}>
+        {/* <Card style={{ width: "19rem", float: "left", marginLeft: "100px" }}>
           <div
             style={{
               width: "10rem",
@@ -113,9 +82,9 @@ const PayDues = () => {
               variant="top"
               src="http://localhost:5000/images/bsi.png"
             />
-          </div>
+          </div> */}
 
-          <Card.Body>
+        {/* <Card.Body>
             <Card.Title style={{ textAlign: "center" }}>
               Bank Syariah Indonesia
             </Card.Title>
@@ -159,33 +128,94 @@ const PayDues = () => {
               </Button>
             </Form>
           </Card.Body>
-        </Card>
-        <div style={{ width: "50%", marginRight: "20%", float: "right" }}>
+        </Card> */}
+        <div
+          style={{
+            width: "95%",
+            marginRight: "2%",
+            float: "right",
+          }}
+        >
           <h3>Details </h3>
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Water </th>
-                <th>Security</th>
-                <th>Cleanliness</th>
-                <th>Total</th>
-                <th>Status</th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  No
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  Name
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  House Number
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  PaymentID
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  Water Usage
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  Water Category
+                </th>
+                <th colspan="3">Bill</th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  VAT
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  Dues
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  Penalty
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  Total Bill
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  Status
+                </th>
+                <th rowSpan={2} style={{ verticalAlign: "middle" }}>
+                  Actions
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <b> Water</b>
+                </td>
+                <td>
+                  <b> Security</b>
+                </td>
+                <td>
+                  <b> Cleanliness</b>
+                </td>
               </tr>
             </thead>
             <tbody>
-              <tr key={id}>
-                <td>{name}</td>
-                <td>Rp{air * hargaAir},</td>
-                <td>Rp{keamanan},-</td>
-                <td>Rp{kebersihan},-</td>
-                <td>
-                  Rp
-                  {totalHarga}
-                  ,-
-                </td>
-                <td>{status}</td>
-              </tr>
+              {paymentById.map((payment, index) => (
+                <tr>
+                  <td style={{ textAlign: "center" }}>{index + 1}</td>
+                  <td>{payment.user.name}</td>
+                  <td style={{ textAlign: "center" }}>
+                    {payment.user.no_rumah}
+                  </td>
+                  <td>{payment.pembayaranId}</td>
+                  <td>{payment.pemakaianAir}</td>
+                  <td>{payment.user.water.jenisKelompokPelanggan}</td>
+                  <td>Rp{payment.air},-</td>
+                  <td>Rp{payment.keamanan},-</td>
+                  <td>Rp{payment.kebersihan},-</td>
+                  <td>{payment.price.ppn}%</td>
+                  <td>Rp{payment.price.iuran},-</td>
+                  <td>Rp{payment.denda + payment.dendaKebersihan},-</td>
+                  <td>Rp{payment.total},-</td>
+                  <td>{payment.status}</td>
+                  <td>
+                    <Link to={`${payment.id}`}>
+                      <Button>Pay It Now</Button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </div>

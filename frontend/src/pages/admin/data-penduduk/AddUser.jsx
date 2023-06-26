@@ -7,6 +7,7 @@ import NavbarComponent from "../../../components/admin/Navbar";
 
 const AddUser = () => {
   const [nik, setNik] = useState("");
+  const [role, setRole] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +23,7 @@ const AddUser = () => {
     try {
       await axios.post("http://localhost:5000/users/create", {
         nik,
+        role,
         name,
         email,
         password,
@@ -49,6 +51,16 @@ const AddUser = () => {
               className="input"
               value={nik}
               onChange={(e) => setNik(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Role</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Role"
+              className="input"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mb-3">

@@ -6,25 +6,34 @@ import Alert from "react-bootstrap/Alert";
 import Carousel from "react-bootstrap/Carousel";
 import FooterComponent from "../components/admin/FooterComponent";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const today = new Date();
+  const defaultMonth = today.getMonth(); // Menggunakan getMonth()+1 karena bulan dimulai dari 0
+  const defaultYear = today.getFullYear();
+  const [bulan, setBulan] = useState(defaultMonth);
+  const [tahun, setTahun] = useState(defaultYear);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const [danger, setDanger] = useState(false);
   const navigate = useNavigate();
+
+  const opsiBulan = Array.from({ length: 12 }, (_, index) =>
+    new Date(0, index).toLocaleDateString("id-ID", { month: "long" })
+  );
   const Auth = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/login", {
+      const response = await axios.post("http://localhost:5000/login", {
         email: email,
         password: password,
       });
-      if (email === "asepbambang@gmail.com") {
+      if (response.data.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/users");
+        navigate(`/users/bayar/${tahun}/${opsiBulan[bulan]}`);
       }
     } catch (error) {
       if (error.response) {

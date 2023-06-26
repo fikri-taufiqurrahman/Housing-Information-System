@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -16,6 +16,17 @@ const NavbarComponent = () => {
       console.log(error);
     }
   };
+  const today = new Date();
+  const defaultMonth = today.getMonth(); // Menggunakan getMonth()+1 karena bulan dimulai dari 0
+  const defaultYear = today.getFullYear();
+  const [bulan, setBulan] = useState(defaultMonth);
+  const [tahun, setTahun] = useState(defaultYear);
+  const [users, setUser] = useState([]);
+
+  const opsiBulan = Array.from({ length: 12 }, (_, index) =>
+    new Date(0, index).toLocaleDateString("id-ID", { month: "long" })
+  );
+
   return (
     <>
       <Navbar
@@ -38,7 +49,12 @@ const NavbarComponent = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/admin/list-penduduk">Resident Data</Nav.Link>
-              <Nav.Link href="/admin/pembayaran">Payment</Nav.Link>
+              <Nav.Link href={`/admin/pembayaran/${tahun}/${opsiBulan[bulan]}`}>
+                Payment
+              </Nav.Link>
+              <Nav.Link href={`/admin/pemasangan-air`}>
+                Water Installation
+              </Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link href="/admin/roomchat">Chat</Nav.Link>
